@@ -4,28 +4,28 @@ object DesignForm: TForm
   Align = alClient
   Caption = 'DesignForm'
   ClientHeight = 359
-  ClientWidth = 584
+  ClientWidth = 701
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Height = -16
+  Font.Name = 'Consolas'
   Font.Style = []
   OldCreateOrder = False
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 19
   object Label1: TLabel
     Left = 96
     Top = 56
-    Width = 31
-    Height = 13
+    Width = 54
+    Height = 19
     Caption = 'Label1'
   end
   object Label2: TLabel
     Left = 144
     Top = 240
-    Width = 31
-    Height = 13
+    Width = 54
+    Height = 19
     Caption = 'Label2'
   end
   object Button1: TButton
@@ -39,13 +39,16 @@ object DesignForm: TForm
   object ScrollBar1: TScrollBar
     Left = 0
     Top = 329
-    Width = 584
+    Width = 701
     Height = 30
     Align = alBottom
+    BiDiMode = bdLeftToRight
     Max = 20
     PageSize = 0
+    ParentBiDiMode = False
     TabOrder = 1
-    ExplicitTop = 304
+    ExplicitTop = 0
+    ExplicitWidth = 584
   end
   object Button2: TButton
     Left = 336

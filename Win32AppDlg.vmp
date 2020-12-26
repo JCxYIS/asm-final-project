@@ -1,0 +1,90 @@
+{
+	"Version": 2,
+	"Project": {
+		"Name": "Win32AppDlg.exe",
+		"Id": "E17B4C39-49A7-49A5-9F5D-6EF0289489DE",
+		"FileName": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Win32AppDlg.vmp",
+		"Created": "2020/12/26 17:16:21",
+		"Type": "ptWin32Dlg",
+		"PreAssembleEventCommandLine": "",
+		"AssembleEventCommandLine": "",
+		"PostAssembleEventCommandLine": "",
+		"PreLinkEventCommandLine": "",
+		"LinkEventCommandLine": "",
+		"AdditionalLinkSwitches": "",
+		"AdditionalLinkFiles": "",
+		"PostLinkEventCommandLine": "",
+		"LibraryPath": "",
+		"OutputFolder": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\",
+		"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Win32AppDlg.exe\"",
+		"SizeInBytes": 6892,
+		"Build": true
+	},
+	"Files": [
+		{
+			"Id": "D4AC542C-9673-45BE-813A-38566B64A43C",
+			"Name": "Assembly1.asm",
+			"Created": "2020/12/26 17:16:21",
+			"Type": "pftASM",
+			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
+			"IsOpen": true,
+			"AssembleFile": true,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "",
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Assembly1.obj\""
+		},
+		{
+			"Id": "B45EE4EC-A2E9-4455-A02C-855BF0E0CB89",
+			"Name": "Dialog3.rc",
+			"Created": "2020/12/26 17:16:21",
+			"Type": "pftRC",
+			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
+			"IsOpen": true,
+			"AssembleFile": true,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "0862F824-0D07-4A3E-A178-423F76C23009",
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.res\""
+		},
+		{
+			"Id": "B2D4919A-010D-41B7-A5D3-96C8E08AA1CF",
+			"Name": "Manifest.xml",
+			"Created": "2020/12/26 17:16:21",
+			"Type": "pftManifest",
+			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
+			"IsOpen": false,
+			"AssembleFile": false,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "",
+			"OutputFile": ""
+		},
+		{
+			"Id": "0862F824-0D07-4A3E-A178-423F76C23009",
+			"Name": "Dialog3.dlg",
+			"Created": "2020/12/26 17:16:21",
+			"Type": "pftDLG",
+			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
+			"IsOpen": true,
+			"AssembleFile": false,
+			"ChildFileRCId": "B45EE4EC-A2E9-4455-A02C-855BF0E0CB89",
+			"ChildFileASMId": "62A42171-B176-4C97-B1DE-E79D7514D2C9",
+			"ParentFileId": "",
+			"OutputFile": ""
+		},
+		{
+			"Id": "62A42171-B176-4C97-B1DE-E79D7514D2C9",
+			"Name": "Dialog3.asm",
+			"Created": "2020/12/26 17:16:21",
+			"Type": "pftASM",
+			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
+			"IsOpen": false,
+			"AssembleFile": true,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "0862F824-0D07-4A3E-A178-423F76C23009",
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.obj\""
+		}
+	]
+}
