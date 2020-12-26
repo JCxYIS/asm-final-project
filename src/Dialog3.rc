@@ -1,0 +1,25 @@
+// Created with Visual MASM
+
+#include "\masm32\include\resource.h"
+1  24  DISCARDABLE	"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\Manifest.xml"
+
+#define Button1 1000
+#define ScrollBar1 1001
+#define Button2 1002
+#define Button3 1003
+#define Label1 1004
+#define Label2 1005
+
+DesignForm DIALOGEX 0, 0, 393, 221
+STYLE  WS_CAPTION | WS_SIZEBOX | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP
+CAPTION "DesignForm"
+CLASS "DLGCLASS"
+FONT 8, "Tahoma"
+{
+   PUSHBUTTON "Button1", Button1, 178, 39, 50, 15, BS_PUSHBUTTON | BS_CENTER 
+   SCROLLBAR ScrollBar1, 0, 329, 50, 15
+   PUSHBUTTON "Button2", Button2, 226, 54, 50, 15, BS_PUSHBUTTON | BS_CENTER 
+   PUSHBUTTON "Button3", Button3, 328, 30, 50, 15, BS_PUSHBUTTON | BS_CENTER 
+   LTEXT "Label1", Label1, 65, 34, 21, 8
+   LTEXT "Label2", Label2, 97, 148, 21, 8
+}
