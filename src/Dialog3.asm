@@ -34,4 +34,16 @@ WndProc proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
 	ret
 WndProc endp
 
+Label_SongNameClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
+     ; Your code here
+     xor eax, eax	; return false
+     ret
+Label_SongNameClick endp
+
+Label_TimeClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
+     ; Your code here
+     xor eax, eax	; return false
+     ret
+Label_TimeClick endp
+
 end

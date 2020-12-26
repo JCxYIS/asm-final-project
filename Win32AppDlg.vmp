@@ -17,7 +17,7 @@
 		"LibraryPath": "",
 		"OutputFolder": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\",
 		"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Win32AppDlg.exe\"",
-		"SizeInBytes": 6892,
+		"SizeInBytes": 3584,
 		"Build": true
 	},
 	"Files": [
@@ -79,7 +79,7 @@
 			"Created": "2020/12/26 17:16:21",
 			"Type": "pftASM",
 			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
-			"IsOpen": false,
+			"IsOpen": true,
 			"AssembleFile": true,
 			"ChildFileRCId": "",
 			"ChildFileASMId": "",

@@ -14,29 +14,33 @@ object DesignForm: TForm
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 19
-  object Label1: TLabel
+  object Label_SongName: TLabel
     Left = 96
     Top = 56
-    Width = 54
+    Width = 72
     Height = 19
-    Caption = 'Label1'
+    Caption = #27468#26354#21517#31281
+    OnClick = Label_SongNameClick
   end
-  object Label2: TLabel
-    Left = 144
-    Top = 240
-    Width = 54
-    Height = 19
-    Caption = 'Label2'
+  object Label_Time: TLabel
+    Left = 0
+    Top = 297
+    Width = 701
+    Height = 32
+    BiDiMode = bdLeftToRight
+    Caption = '00:00 / 00:00'
+    ParentBiDiMode = False
+    OnClick = Label_TimeClick
   end
-  object Button1: TButton
+  object Button_Play: TButton
     Left = 264
     Top = 64
     Width = 75
     Height = 25
-    Caption = 'Button1'
+    Caption = #27874#25918
     TabOrder = 0
   end
-  object ScrollBar1: TScrollBar
+  object ScrollBar_Time: TScrollBar
     Left = 0
     Top = 329
     Width = 701
@@ -50,20 +54,20 @@ object DesignForm: TForm
     ExplicitTop = 0
     ExplicitWidth = 584
   end
-  object Button2: TButton
-    Left = 336
-    Top = 88
+  object Button_Pause: TButton
+    Left = 392
+    Top = 216
     Width = 75
     Height = 25
-    Caption = 'Button2'
+    Caption = #35738#20572
     TabOrder = 2
   end
-  object Button3: TButton
+  object Button_Stop: TButton
     Left = 488
     Top = 48
     Width = 75
     Height = 25
-    Caption = 'Button3'
+    Caption = #31680#32032
     TabOrder = 3
   end
 end
