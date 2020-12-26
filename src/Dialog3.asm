@@ -46,4 +46,24 @@ Label_TimeClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
      ret
 Label_TimeClick endp
 
+
+
+Button_PlayClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
+     ; Your code here
+     xor eax, eax	; return false
+     ret
+Button_PlayClick endp
+
+Button_PauseClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
+     ; Your code here
+     xor eax, eax	; return false
+     ret
+Button_PauseClick endp
+
+Button_StopClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
+     ; Your code here
+     xor eax, eax	; return false
+     ret
+Button_StopClick endp
+
 end
