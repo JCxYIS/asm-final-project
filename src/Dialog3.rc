@@ -3,23 +3,23 @@
 #include "\masm32\include\resource.h"
 1  24  DISCARDABLE	"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\Manifest.xml"
 
-#define Button_Play 1000
-#define ScrollBar_Time 1001
-#define Button_Pause 1002
-#define Button_Stop 1003
-#define Label_SongName 1004
-#define Label_Time 1005
+#define Label_SongName 1000
+#define Label_Time 1001
+#define Button_Play 1002
+#define ScrollBar_Time 1003
+#define Button_Pause 1004
+#define Button_Stop 1005
 
-DesignForm DIALOGEX 0, 0, 312, 151
+DesignForm DIALOGEX 0, 0, 315, 151
 STYLE  WS_CAPTION | WS_SIZEBOX | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP
 CAPTION "DesignForm"
 CLASS "DLGCLASS"
 FONT 12, "Consolas"
 {
+   LTEXT "ºq¦±¦WºÙ", Label_SongName, 43, 24, 32, 8
+   LTEXT "00:00 / 00:00", Label_Time, 0, 125, 52, 8
    PUSHBUTTON "ªi©ñ", Button_Play, 117, 27, 33, 11, BS_PUSHBUTTON | BS_CENTER 
    SCROLLBAR ScrollBar_Time, 0, 329, 33, 11
    PUSHBUTTON "Æg°±", Button_Pause, 174, 91, 33, 11, BS_PUSHBUTTON | BS_CENTER 
    PUSHBUTTON "¸`¯À", Button_Stop, 217, 20, 33, 11, BS_PUSHBUTTON | BS_CENTER 
-   LTEXT "ºq¦±¦WºÙ", Label_SongName, 43, 24, 32, 8
-   LTEXT "00:00 / 00:00", Label_Time, 0, 125, 312, 13
 }

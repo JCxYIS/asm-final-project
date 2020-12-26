@@ -4,7 +4,7 @@ object DesignForm: TForm
   Align = alClient
   Caption = 'DesignForm'
   ClientHeight = 359
-  ClientWidth = 701
+  ClientWidth = 709
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -25,8 +25,8 @@ object DesignForm: TForm
   object Label_Time: TLabel
     Left = 0
     Top = 297
-    Width = 701
-    Height = 32
+    Width = 117
+    Height = 19
     BiDiMode = bdLeftToRight
     Caption = '00:00 / 00:00'
     ParentBiDiMode = False
@@ -39,11 +39,12 @@ object DesignForm: TForm
     Height = 25
     Caption = #27874#25918
     TabOrder = 0
+    OnClick = Button_PlayClick
   end
   object ScrollBar_Time: TScrollBar
     Left = 0
     Top = 329
-    Width = 701
+    Width = 709
     Height = 30
     Align = alBottom
     BiDiMode = bdLeftToRight
@@ -51,8 +52,6 @@ object DesignForm: TForm
     PageSize = 0
     ParentBiDiMode = False
     TabOrder = 1
-    ExplicitTop = 0
-    ExplicitWidth = 584
   end
   object Button_Pause: TButton
     Left = 392
@@ -61,6 +60,7 @@ object DesignForm: TForm
     Height = 25
     Caption = #35738#20572
     TabOrder = 2
+    OnClick = Button_PauseClick
   end
   object Button_Stop: TButton
     Left = 488
@@ -69,5 +69,6 @@ object DesignForm: TForm
     Height = 25
     Caption = #31680#32032
     TabOrder = 3
+    OnClick = Button_StopClick
   end
 end
