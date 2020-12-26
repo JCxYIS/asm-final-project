@@ -1,0 +1,51 @@
+{
+	"Version": 2,
+	"Project": {
+		"Name": "Win32App.exe",
+		"Id": "C45B0B23-D0F8-4133-B176-52C2C1F280D2",
+		"FileName": "E:\\Documents\\asm-final-project\\Win32App.vmp",
+		"Created": "2020/12/26 10:04:42",
+		"Type": "ptWin32",
+		"PreAssembleEventCommandLine": "",
+		"AssembleEventCommandLine": "",
+		"PostAssembleEventCommandLine": "",
+		"PreLinkEventCommandLine": "",
+		"LinkEventCommandLine": "",
+		"AdditionalLinkSwitches": "",
+		"AdditionalLinkFiles": "",
+		"PostLinkEventCommandLine": "",
+		"LibraryPath": "",
+		"OutputFolder": "E:\\Documents\\asm-final-project\\",
+		"OutputFile": "\"E:\\Documents\\asm-final-project\\Release\\Win32App.exe\"",
+		"SizeInBytes": 4096,
+		"Build": true
+	},
+	"Files": [
+		{
+			"Id": "76F30A34-8820-469C-8638-03346683A4BC",
+			"Name": "rsrc.rc",
+			"Created": "2020/12/26 10:07:33",
+			"Type": "pftRC",
+			"Path": "E:\\Documents\\asm-final-project\\",
+			"IsOpen": true,
+			"AssembleFile": true,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "",
+			"OutputFile": "\"E:\\Documents\\asm-final-project\\Release\\rsrc.res\""
+		},
+		{
+			"Id": "460F2309-482D-4848-9CDE-339EF5314530",
+			"Name": "Multimedia.asm",
+			"Created": "2020/12/26 10:08:44",
+			"Type": "pftASM",
+			"Path": "E:\\Documents\\asm-final-project\\",
+			"IsOpen": true,
+			"AssembleFile": true,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "",
+			"OutputFile": "\"E:\\Documents\\asm-final-project\\Release\\Multimedia.obj\""
+		}
+	]
+}
