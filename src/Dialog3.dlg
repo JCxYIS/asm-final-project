@@ -15,8 +15,8 @@ object DesignForm: TForm
   PixelsPerInch = 96
   TextHeight = 19
   object Label_SongName: TLabel
-    Left = 96
-    Top = 56
+    Left = 80
+    Top = 24
     Width = 72
     Height = 19
     Caption = #27468#26354#21517#31281
@@ -70,5 +70,14 @@ object DesignForm: TForm
     Caption = #31680#32032
     TabOrder = 3
     OnClick = Button_StopClick
+  end
+  object button_test: TButton
+    Left = 568
+    Top = 256
+    Width = 75
+    Height = 25
+    Caption = 'test'
+    TabOrder = 4
+    OnClick = button_testClick
   end
 end

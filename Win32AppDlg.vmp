@@ -17,7 +17,7 @@
 		"LibraryPath": "",
 		"OutputFolder": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\",
 		"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Debug\\Win32AppDlg.exe\"",
-		"SizeInBytes": 8264,
+		"SizeInBytes": 8532,
 		"Build": true
 	},
 	"Files": [

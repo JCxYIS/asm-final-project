@@ -25,12 +25,16 @@ includelib \masm32\lib\winmm.lib
 	; is music playing?
 	isPlaying     DWORD 0
 	
-	;  as
+	; mp3 player var
 	mp3PlayerId   DWORD 0
 	mp3PlayerType BYTE  "MPEGVideo",0
 	
 	; mp3 path
 	filePath      BYTE  "F:\Y.mp3", 0   
+	
+	; tmp
+	tmp_str       BYTE  128 DUP(0)
+	
 
 .Code
 
@@ -40,16 +44,23 @@ PlayMp3 PROC hWin:DWORD, NameOfFile:DWORD
 
 	LOCAL mciOpenParms:MCI_OPEN_PARMS, mciPlayParms:MCI_PLAY_PARMS
 
+ 	; may think `mci` as a mesia player
+	; see https://www.itsfun.com.tw/mciSendCommand/wiki-6349974-0497854
+	
 	mov eax, hWin        
 	mov mciPlayParms.dwCallback, eax
+	
+	; set player device type
 	mov eax, OFFSET mp3PlayerType
-	mov mciOpenParms.lpstrDeviceType,eax
+	mov mciOpenParms.lpstrDeviceType, eax
+	
 	mov eax, NameOfFile
 	mov mciOpenParms.lpstrElementName, eax	
  	invoke mciSendCommand, 0, MCI_OPEN,MCI_OPEN_TYPE or MCI_OPEN_ELEMENT, ADDR mciOpenParms	
+ 	
 	mov eax, mciOpenParms.wDeviceID
-	mov mp3PlayerId, eax
-	invoke mciSendCommand, mp3PlayerId, MCI_PLAY,MCI_NOTIFY, ADDR mciPlayParms
+	mov mp3PlayerId, eax	
+	invoke mciSendCommand, mp3PlayerId, MCI_PLAY, MCI_NOTIFY, ADDR mciPlayParms
 	
 	ret  
 
@@ -74,9 +85,14 @@ Label_TimeClick endp
 
 Button_PlayClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
      ; Your code here
-     mov isPlaying, 1
-     invoke PlayMp3, hWnd, ADDR filePath
-     invoke SetWindowText, hWnd, ADDR filePath 
+     .IF mp3PlayerId == 0
+	     mov isPlaying, 1
+		 invoke PlayMp3, hWnd, ADDR filePath
+		 invoke SetWindowText, hWnd, ADDR filePath
+		 invoke SendDlgItemMessage, hWnd, 1000, WM_SETTEXT, 0, ADDR filePath
+     .ELSE
+     	 invoke mciSendCommand, mp3PlayerId, MCI_RESUME, 0, 0
+     .ENDIF  
           
      xor eax, eax	; return false
      ret
@@ -84,16 +100,34 @@ Button_PlayClick endp
 
 Button_PauseClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
      ; Your code here
+     invoke mciSendCommand, mp3PlayerId, MCI_PAUSE, 0, 0     
      xor eax, eax	; return false
+     mov isPlaying, eax
+     
      ret
 Button_PauseClick endp
 
 Button_StopClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
      ; Your code here
      invoke SendMessage, hWnd, WM_CLOSE, NULL, NULL
-     xor eax, eax	; return false
+     xor eax, eax
+     mov isPlaying, eax
+     mov mp3PlayerId, eax
+     
      ret
 Button_StopClick endp
+
+
+button_testClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
+     ; Your code here
+     ;mov ebx, mp3PlayerId
+     ;mov tmp_str, bl
+	 invoke SetWindowText, hWnd, ADDR tmp_str 
+	 ;invoke mciSendCommand, mp3PlayerId, MCI_SET_TIME_FORMAT, 0, 0                	
+     
+     xor eax, eax	; return false     
+     ret
+button_testClick endp
 
 
 ; main------------------------------------------------------------------------- 
@@ -117,6 +151,9 @@ WndProc proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
 		
 		.ELSEIF wParam == 1005
 			invoke Button_StopClick, hWnd, uMsg, wParam, lParam 
+			
+		.ELSEIF wParam == 1006
+			invoke button_testClick, hWnd, uMsg, wParam, lParam               
 		
 		.ELSE
 			mov edx,wParam
