@@ -1,0 +1,38 @@
+{
+	"Version": 2,
+	"Project": {
+		"Name": "ojspamm.exe",
+		"Id": "BFCBEA97-A33B-415C-9BDC-806886628EB6",
+		"FileName": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\ojspamm.vmp",
+		"Created": "2020/12/27 21:00:55",
+		"Type": "ptWin32Con",
+		"PreAssembleEventCommandLine": "",
+		"AssembleEventCommandLine": "",
+		"PostAssembleEventCommandLine": "",
+		"PreLinkEventCommandLine": "",
+		"LinkEventCommandLine": "",
+		"AdditionalLinkSwitches": "",
+		"AdditionalLinkFiles": "",
+		"PostLinkEventCommandLine": "",
+		"LibraryPath": "",
+		"OutputFolder": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\",
+		"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\Debug\\ojspamm.exe\"",
+		"SizeInBytes": 5380,
+		"Build": true
+	},
+	"Files": [
+		{
+			"Id": "565B259A-04ED-442B-B9C0-698A6B980895",
+			"Name": "byebyeDataStrucOJ.asm",
+			"Created": "2020/12/27 21:00:55",
+			"Type": "pftASM",
+			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\",
+			"IsOpen": true,
+			"AssembleFile": true,
+			"ChildFileRCId": "",
+			"ChildFileASMId": "",
+			"ParentFileId": "",
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\Debug\\byebyeDataStrucOJ.obj\""
+		}
+	]
+}
