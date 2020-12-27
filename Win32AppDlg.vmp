@@ -35,17 +35,17 @@
 			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Assembly1.obj\""
 		},
 		{
-			"Id": "62A42171-B176-4C97-B1DE-E79D7514D2C9",
-			"Name": "Dialog3.asm",
+			"Id": "B45EE4EC-A2E9-4455-A02C-855BF0E0CB89",
+			"Name": "Dialog3.rc",
 			"Created": "2020/12/26 ¤W¤È 05:16:21",
-			"Type": "pftASM",
+			"Type": "pftRC",
 			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
 			"IsOpen": true,
 			"AssembleFile": true,
 			"ChildFileRCId": "",
 			"ChildFileASMId": "",
 			"ParentFileId": "0862F824-0D07-4A3E-A178-423F76C23009",
-			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.obj\""
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.res\""
 		},
 		{
 			"Id": "B2D4919A-010D-41B7-A5D3-96C8E08AA1CF",
@@ -74,17 +74,17 @@
 			"OutputFile": ""
 		},
 		{
-			"Id": "B45EE4EC-A2E9-4455-A02C-855BF0E0CB89",
-			"Name": "Dialog3.rc",
+			"Id": "62A42171-B176-4C97-B1DE-E79D7514D2C9",
+			"Name": "Dialog3.asm",
 			"Created": "2020/12/26 ¤W¤È 05:16:21",
-			"Type": "pftRC",
+			"Type": "pftASM",
 			"Path": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\src\\",
 			"IsOpen": true,
 			"AssembleFile": true,
 			"ChildFileRCId": "",
 			"ChildFileASMId": "",
 			"ParentFileId": "0862F824-0D07-4A3E-A178-423F76C23009",
-			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.res\""
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.obj\""
 		}
 	]
 }

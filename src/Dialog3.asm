@@ -190,6 +190,15 @@ button_testClick endp
 ; ----- Some methods used in the GAME -------------
 ; ***************************************
 
+; save the result in eax
+;IsPointInsideRect MACRO point, x, y, rectWidth, rectLength
+;	xor eax, eax
+;	.IF point.x >= x && point.x <= x+rectWidth
+;		mov eax, 1
+;	.ENDIF
+;ENDM
+
+
 ; descipt: draw rect
 ; @param {COLORREF} color ; the value of 'COLORREF' is in a RGB form with hex which is "0x00bbggrr"
 ; 
@@ -246,6 +255,14 @@ UpdatePlayer proc hWnd:DWORD
 	.ENDIF
 	
 	invoke DrawRect, hWnd, currentPos.x, currentPos.y, 10, 10, 00FF0000h
+	
+	.IF currentPos.x >= 264 && currentPos.x <= 264+75 && currentPos.y >= 64 && currentPos.y <= 64+25
+		invoke Button_PlayClick, hWnd, 0, 0, 0
+	.ELSEIF currentPos.x >= 392 && currentPos.x <= 392+75 && currentPos.y >= 216 && currentPos.y <= 216+25
+		invoke Button_PauseClick, hWnd, 0, 0, 0
+	.ELSEIF currentPos.x >= 488 && currentPos.x <= 488+75 && currentPos.y >= 48 && currentPos.y <= 48+25
+		invoke Button_StopClick, hWnd, 0, 0, 0
+	.ENDIF
 	 
 	xor eax, eax
 	ret
