@@ -16,8 +16,8 @@
 		"PostLinkEventCommandLine": "",
 		"LibraryPath": "",
 		"OutputFolder": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\",
-		"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Debug\\Win32AppDlg.exe\"",
-		"SizeInBytes": 8532,
+		"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Win32AppDlg.exe\"",
+		"SizeInBytes": 4608,
 		"Build": true
 	},
 	"Files": [
@@ -32,7 +32,7 @@
 			"ChildFileRCId": "",
 			"ChildFileASMId": "",
 			"ParentFileId": "",
-			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Debug\\Assembly1.obj\""
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Assembly1.obj\""
 		},
 		{
 			"Id": "0862F824-0D07-4A3E-A178-423F76C23009",
@@ -71,7 +71,7 @@
 			"ChildFileRCId": "",
 			"ChildFileASMId": "",
 			"ParentFileId": "0862F824-0D07-4A3E-A178-423F76C23009",
-			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Debug\\Dialog3.res\""
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.res\""
 		},
 		{
 			"Id": "62A42171-B176-4C97-B1DE-E79D7514D2C9",
@@ -84,7 +84,7 @@
 			"ChildFileRCId": "",
 			"ChildFileASMId": "",
 			"ParentFileId": "0862F824-0D07-4A3E-A178-423F76C23009",
-			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Debug\\Dialog3.obj\""
+			"OutputFile": "\"C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Release\\Dialog3.obj\""
 		}
 	]
 }

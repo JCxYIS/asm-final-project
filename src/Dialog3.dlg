@@ -80,4 +80,12 @@ object DesignForm: TForm
     TabOrder = 4
     OnClick = button_testClick
   end
+  object Edit1: TEdit
+    Left = 96
+    Top = 160
+    Width = 449
+    Height = 27
+    TabOrder = 5
+    Text = 'Edit1'
+  end
 end

@@ -18,34 +18,46 @@ includelib \masm32\lib\winmm.lib
 	icex INITCOMMONCONTROLSEX <> ;structure for Controls
 ;	hInstance HINSTANCE ? 
 ;	CommandLine LPSTR ? 
-;	buffer db 512 dup(?) 
+
+
+
+
 
 	
 .Data
 	; is music playing?
-	isPlaying     DWORD 0
+	isPlaying      DWORD 0
 	
 	; mp3 player var
-	mp3PlayerId   DWORD 0
-	mp3PlayerType BYTE  "MPEGVideo",0
+	mp3PlayerId    DWORD 0
+	mp3PlayerType  BYTE  "MPEGVideo",0
+	mp3PlayerAlias BYTE  "myMp3Player", 0
+	
+	; mp3 player cmd
+	mp3cmd_info    BYTE  "pause MPEGVideo", 0
 	
 	; mp3 path
-	filePath      BYTE  "F:\Y.mp3", 0   
+	filePath       BYTE  "F:\Y.mp3", 0   
 	
 	; tmp
-	tmp_str       BYTE  128 DUP(0)
+	tmp_str        BYTE  128 DUP(0)
 	
+
+
+
+
+
 
 .Code
 
 ; mp3 player---------------------------------------------
 
 PlayMp3 PROC hWin:DWORD, NameOfFile:DWORD
-
 	LOCAL mciOpenParms:MCI_OPEN_PARMS, mciPlayParms:MCI_PLAY_PARMS
 
  	; may think `mci` as a mesia player
 	; see https://www.itsfun.com.tw/mciSendCommand/wiki-6349974-0497854
+	; and https://docs.microsoft.com/zh-tw/windows/win32/multimedia/
 	
 	mov eax, hWin        
 	mov mciPlayParms.dwCallback, eax
@@ -54,17 +66,34 @@ PlayMp3 PROC hWin:DWORD, NameOfFile:DWORD
 	mov eax, OFFSET mp3PlayerType
 	mov mciOpenParms.lpstrDeviceType, eax
 	
+	; set filepath
 	mov eax, NameOfFile
-	mov mciOpenParms.lpstrElementName, eax	
+	mov mciOpenParms.lpstrElementName, eax
+
+	; set alias	
+	mov eax, OFFSET mp3PlayerAlias
+	mov mciOpenParms.lpstrAlias, eax
+	
+	; open that	
  	invoke mciSendCommand, 0, MCI_OPEN,MCI_OPEN_TYPE or MCI_OPEN_ELEMENT, ADDR mciOpenParms	
  	
+ 	; set mci's device id to our var!
 	mov eax, mciOpenParms.wDeviceID
-	mov mp3PlayerId, eax	
+	mov mp3PlayerId, eax
+	
+	; let's play	
 	invoke mciSendCommand, mp3PlayerId, MCI_PLAY, MCI_NOTIFY, ADDR mciPlayParms
 	
 	ret  
-
 PlayMp3 ENDP
+
+GetMp3PlayerInfo PROC hWin:DWORD
+	LOCAL mciStatusParms:MCI_STATUS_PARMS
+	
+	;mciStatus.dwItem = MCI_STATUS_POSITION; 
+    ;mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPSTR)&mciStatus); 
+
+GetMp3PlayerInfo ENDP 
 
 
 ; event handler---------------------------------------------------					 
@@ -122,8 +151,9 @@ button_testClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
      ; Your code here
      ;mov ebx, mp3PlayerId
      ;mov tmp_str, bl
-	 invoke SetWindowText, hWnd, ADDR tmp_str 
-	 ;invoke mciSendCommand, mp3PlayerId, MCI_SET_TIME_FORMAT, 0, 0                	
+	 ;invoke SetWindowText, hWnd, ADDR tmp_str 
+	 ;invoke mciSendCommand, mp3PlayerId, MCI_SET_TIME_FORMAT, 0, 0   
+	 invoke GetMp3PlayerInfo, hWnd             	
      
      xor eax, eax	; return false     
      ret

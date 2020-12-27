@@ -10,6 +10,7 @@
 #define Button_Pause 1004
 #define Button_Stop 1005
 #define button_test 1006
+#define Edit1 1007
 
 DesignForm DIALOGEX 0, 0, 315, 151
 STYLE  WS_CAPTION | WS_SIZEBOX | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP
@@ -24,4 +25,5 @@ FONT 12, "Consolas"
    PUSHBUTTON "Æg°±", Button_Pause, 174, 91, 33, 11, BS_PUSHBUTTON | BS_CENTER 
    PUSHBUTTON "¸`¯À", Button_Stop, 217, 20, 33, 11, BS_PUSHBUTTON | BS_CENTER 
    PUSHBUTTON "test", button_test, 252, 108, 33, 11, BS_PUSHBUTTON | BS_CENTER 
+   EDITTEXT Edit1, 43, 67, 200, 11
 }
