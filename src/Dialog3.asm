@@ -8,11 +8,29 @@ include \masm32\include\user32.inc
 include \masm32\include\kernel32.inc
 include \masm32\include\winmm.inc
 ;include \masm32\lib\Irvine\Irvine32.inc
+include \masm32\include\gdi32.inc
 
 includelib \masm32\lib\user32.lib
 includelib \masm32\lib\kernel32.lib
 includelib \masm32\lib\winmm.lib 
 
+
+DPOINT STRUCT
+	x DWORD ?
+	y DWORD ?
+DPOINT ENDS
+
+PLAYER_KEY STRUCT
+	up BYTE ?
+	down BYTE ?
+	left BYTE ?
+	right BYTE ?
+PLAYER_KEY ENDS
+
+BULLET STRUCT
+	pos DPOINT <200, 200>
+	speed DWORD 5
+BULLET ENDS
 
 .Data?
 	icex INITCOMMONCONTROLSEX <> ;structure for Controls
@@ -44,8 +62,16 @@ includelib \masm32\lib\winmm.lib
 	
 
 
-
-
+ 	; **********************
+	; global varibale used in GAME
+	; *********************	
+	isGameStarted BYTE 0
+	PLAYER_SPEED DWORD 20
+	testFunPtr DWORD ?
+	playerKeys PLAYER_KEY<0, 0, 0, 0>
+	currentPos DPOINT<100, 100>
+	playerVec DPOINT<0, 0>
+	bulletList BULLET 10 DUP(<>)
 
 
 .Code
@@ -160,6 +186,133 @@ button_testClick proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
 button_testClick endp
 
 
+; ***************************************
+; ----- Some methods used in the GAME -------------
+; ***************************************
+
+; descipt: draw rect
+; @param {COLORREF} color ; the value of 'COLORREF' is in a RGB form with hex which is "0x00bbggrr"
+; 
+DrawRect proc hWnd:DWORD, x1:DWORD, y1:DWORD, rWidth:DWORD, rLength:DWORD, color:DWORD
+	LOCAL   x2:DWORD, y2:DWORD,
+			hbrush:DWORD, hdc:DWORD, rect:RECT	; some local variable
+	mov eax, x1
+	add eax, rWidth
+	mov x2, eax
+	
+	mov eax, y1
+	add eax, rLength
+	mov y2, eax
+	
+	invoke SetRect, addr rect, x1, y1, x2, y2
+	invoke CreateSolidBrush, color
+	mov hbrush, eax
+	
+	invoke GetDC, hWnd
+	mov hdc, eax
+	
+	invoke FillRect, hdc,addr rect, hbrush 
+	
+	invoke ReleaseDC, hWnd, hdc
+	invoke DeleteObject, hbrush
+	xor eax, eax
+	ret
+DrawRect endp 
+
+UpdatePlayer proc hWnd:DWORD
+	invoke DrawRect, hWnd, currentPos.x, currentPos.y, 10, 10, 00FFFFFFh
+		
+	;invoke MessageBeep, 2		
+; 		mov eax, playerVec.x
+;		add currentPos.x, eax
+;		mov eax, playerVec.y
+;		add currentPos.y, eax
+	mov eax, PLAYER_SPEED
+	.IF playerKeys.up == 1
+		sub currentPos.y, eax
+		mov playerKeys.up, 0
+	.ENDIF
+	.IF playerKeys.down == 1
+		add currentPos.y, eax
+		mov playerKeys.down, 0
+	.ENDIF
+	.IF playerKeys.left == 1
+		sub currentPos.x, eax
+		mov playerKeys.left, 0
+	.ENDIF
+	.IF playerKeys.right == 1
+		add currentPos.x, eax
+		mov playerKeys.right, 0
+	.ENDIF
+	
+	invoke DrawRect, hWnd, currentPos.x, currentPos.y, 10, 10, 00FF0000h
+	 
+	xor eax, eax
+	ret
+UpdatePlayer endp
+
+
+InitBullet proc bulletPtr:PTR BULLET
+	push edi
+	
+	mov edi, bulletPtr
+	ASSUME edi: PTR BULLET
+	
+	; call random
+;	mov eax, 300
+;	call Random32
+
+	
+	mov [edi].pos.x, 500
+	mov [edi].pos.y, 200
+	mov [edi].speed, 20
+	
+	pop edi
+	xor eax, eax
+	ret
+InitBullet endp
+
+UpdateBullet proc hWnd:DWORD
+	push ecx
+	
+	mov ecx, LENGTHOF bulletList
+	
+	ForEachBullet:
+		push ecx	; save the counter
+		 	
+		.IF bulletList[ecx-1].pos.x <= 0
+			invoke InitBullet, addr bulletList[ecx-1]
+		.ENDIF
+		
+		; remove the rect at original posision
+		;invoke DrawRect, hWnd, bulletList[ecx-1].pos.x, bulletList[ecx-1].pos.y, 10, 10, 00FFFFFFh
+		;mov eax, bulletList[ecx-1].speed
+		;sub bulletList[ecx-1].pos.x, eax
+		
+		; draw the bullet
+		invoke DrawRect, hWnd, bulletList[ecx-1].pos.x, bulletList[ecx-1].pos.y, 20, 20, 000000FFh
+		pop ecx		; relase the counter 
+		loop ForEachBullet
+	
+	pop ecx
+	xor eax, eax
+	ret
+UpdateBullet endp
+
+; -------------------------------
+; Game main
+; --------------------------------
+
+GameMainProc proc hWnd:DWORD
+ 	
+	invoke UpdatePlayer, hWnd
+	;invoke UpdateBullet, hWnd
+
+	
+	mov eax, 1	; return 1 for continue the loop
+	ret	
+GameMainProc endp
+
 ; main------------------------------------------------------------------------- 
 
 WndProc proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
@@ -190,7 +343,24 @@ WndProc proc hWnd:DWORD, uMsg:DWORD, wParam:DWORD, lParam:DWORD
 			shr edx,16
 			; Process messages here
 		.ENDIF
-				
+	.ELSEIF uMsg == WM_KEYDOWN
+		; update playerVec when keyDown
+		mov eax, lParam
+		and eax, 70000000h		; ignore repeating key event
+		.IF eax == 0
+			.IF wParam == 57h	; 'w'
+				mov playerKeys.up, 1
+			.ENDIF
+			.IF wParam == 53h	; 's'
+				mov playerKeys.down, 1
+			.ENDIF		
+			.IF wParam == 41h	; 'a'
+				mov playerKeys.left, 1
+			.ENDIF
+			.IF wParam == 44h	; 'd'
+				mov playerKeys.right, 1
+			.ENDIF
+		.ENDIF			
 	.ELSE
 		invoke DefWindowProc,hWnd,uMsg,wParam,lParam
 		ret		

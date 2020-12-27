@@ -12,6 +12,7 @@ option casemap: none	; Case sensitive syntax
 ; Our Dialog Window procedure prototype
 ; *************************************************************************
 WndProc proto :DWORD,:DWORD,:DWORD,:DWORD
+GameMainProc proto :DWORD
 
 ; *************************************************************************
 ; Our main application procedure prototype
@@ -23,7 +24,9 @@ WinMain proto :DWORD,:DWORD,:DWORD,:DWORD
 ; *************************************************************************  
 include \masm32\include\windows.inc 
 include \masm32\include\user32.inc 
-include \masm32\include\kernel32.inc 
+include \masm32\include\kernel32.inc
+include \masm32\include\gdi32.inc
+includelib \masm32\lib\gdi32.lib 
 
 ; *************************************************************************
 ; MASM32 object libraries
@@ -123,8 +126,10 @@ WinMain	proc hInst:HINSTANCE,hPrevInst:HINSTANCE,CmdLine:LPSTR,CmdShow:DWORD
 		.IF eax ==FALSE 
 			invoke TranslateMessage, ADDR msg 
 			invoke DispatchMessage, ADDR msg 
-		.ENDIF 
-	.ENDW 
+		.ENDIF
+		
+		invoke GameMainProc, hDlg 
+	.ENDW
 	mov		eax,msg.wParam 
 	ret 
 WinMain endp 
