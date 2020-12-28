@@ -55,7 +55,7 @@ BULLET ENDS
 	mp3cmd_info    BYTE  "pause MPEGVideo", 0
 	
 	; mp3 path
-	filePath       BYTE  "F:\Y.mp3", 0   
+	filePath       BYTE  "C:\wow.mp3", 0   
 	
 	; tmp
 	tmp_str        BYTE  128 DUP(0)

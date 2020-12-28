@@ -1,0 +1,23 @@
+{
+	"Version": 2,
+	"Group": {
+		"Name": "ojspamm",
+		"Id": "874A9BCF-7E47-4EC6-9BD9-CC9FDDDE0FF5",
+		"Created": "2020/12/26 17:33:03",
+		"FileName": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\ojspamm.vmg",
+		"SelectedProjectId": "BFCBEA97-A33B-415C-9BDC-806886628EB6",
+		"LastFileOpenId": "565B259A-04ED-442B-B9C0-698A6B980895",
+		"Projects": [
+			{
+				"Id": "BFCBEA97-A33B-415C-9BDC-806886628EB6",
+				"Name": "ojspamm.exe",
+				"FileName": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ojspammer\\ojspamm.vmp"
+			}
+		],
+		"BuildOrder": [
+			{
+				"Id": "BFCBEA97-A33B-415C-9BDC-806886628EB6"
+			}
+		]
+	}
+}

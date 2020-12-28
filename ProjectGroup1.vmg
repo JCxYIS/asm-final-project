@@ -1,0 +1,23 @@
+{
+	"Version": 2,
+	"Group": {
+		"Name": "ProjectGroup1",
+		"Id": "15B8864E-BCF4-43E2-B325-D03E4963CCAB",
+		"Created": "2020/12/28 13:22:50",
+		"FileName": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\ProjectGroup1.vmg",
+		"SelectedProjectId": "E17B4C39-49A7-49A5-9F5D-6EF0289489DE",
+		"LastFileOpenId": "0862F824-0D07-4A3E-A178-423F76C23009",
+		"Projects": [
+			{
+				"Id": "E17B4C39-49A7-49A5-9F5D-6EF0289489DE",
+				"Name": "Win32AppDlg.exe",
+				"FileName": "C:\\Program Files (x86)\\Visual MASM\\Projects\\asm-final-project\\Win32AppDlg.vmp"
+			}
+		],
+		"BuildOrder": [
+			{
+				"Id": "E17B4C39-49A7-49A5-9F5D-6EF0289489DE"
+			}
+		]
+	}
+}
